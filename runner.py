@@ -172,11 +172,11 @@ def run_simulation_process():
 
         log(f'starting node{i}.')
         p = subprocess.Popen(' '.join([
-            'python',
+            'python3.6',
             workspace.parent.parent.absolute().joinpath('node.py').__str__(),
             f'--force-node {i}',
             '--pika-host localhost',
-            '--world simulator-only-neighbours',
+            f'--world simulator-only-neighbours',
             '--network ' + workspace.joinpath('network.gml').absolute().__str__(),
             '--simulate-network-parameters'
         ]), shell=True, stdout=stdout, stderr=stderr)

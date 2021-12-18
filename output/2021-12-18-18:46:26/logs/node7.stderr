@@ -1,0 +1,46 @@
+[info] number of nodes 9
+[info] Hello from node7
+[info] I'm connected to nodes ['2', '7']
+[info] I have edges [('7', '2'), ('7', '7')]
+[info] current status is True
+[info] send message to 2: [0, [8], 0]
+[info] sent message [0, [8], 0] to 2
+[info] send message to 7: [0, [8], 0]
+[info] sent message [0, [8], 0] to 7
+[info] message is [0, [8], 0]
+[info] this node's round : 0, id : 8, parent :7, status :True
+[info] the received message is, round 0, id : 8, sub_tree: 0, from 7
+[info] received message from []
+[info] neighbors ['2']
+[info] message is [0, [0], 0]
+[info] this node's round : 0, id : 8, parent :7, status :True
+[info] the received message is, round 0, id : 0, sub_tree: 0, from 2
+[info] message is [0, 2, 0]
+[info] this node's round : 0, id : 8, parent :7, status :True
+[info] the received message is, round 0, id : 2, sub_tree: 0, from 2
+[info] message is [1, 2, 0]
+[info] this node's round : 0, id : 8, parent :7, status :True
+[info] the received message is, round 1, id : 2, sub_tree: 0, from 2
+[info] changed wave to 2
+[info] send message to 7: [1, 2, 0]
+[info] message is [1, 2, 0]
+[info] this node's round : 1, id : 2, parent :2, status :False
+[info] the received message is, round 1, id : 2, sub_tree: 0, from 7
+[info] received message from ['7']
+[info] neighbors ['7']
+[info] returned from all of the neighbors 
+[info] send message to 2: [1, 2, 0]
+[info] message is [1, 4, 0]
+[info] this node's round : 1, id : 2, parent :2, status :False
+[info] the received message is, round 1, id : 4, sub_tree: 0, from 2
+[info] changed wave to 4
+[info] send message to 7: [1, 4, 0]
+[info] message is [1, 4, 0]
+[info] this node's round : 1, id : 4, parent :2, status :False
+[info] the received message is, round 1, id : 4, sub_tree: 0, from 7
+[info] received message from ['7']
+[info] neighbors ['7']
+[info] returned from all of the neighbors 
+[info] send message to 2: [1, 4, 0]
+[info] send message to 2: exit
+[info] send message to 7: exit

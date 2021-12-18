@@ -1,0 +1,6 @@
+ o How do we create a network for the first part ? it seems that simple input networks are enough 
+ o How to initialize nodes? -> ok this is obvious maybe with a random probability of p each node
+    is initiated at first. 
+ o How to add network from networkx to the runner code ??
+ 
+    

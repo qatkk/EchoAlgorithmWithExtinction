@@ -4,6 +4,7 @@ import socket
 import sys
 
 import networkx as nx
+from networkx.classes.function import number_of_nodes
 import pika
 from networkx.classes.reportviews import EdgeDataView
 
@@ -95,6 +96,7 @@ class SimulatorFullView(AbstractWorld):
     def receive(self, src, msg):
         from algorithm import process_msg
         return process_msg(src, msg)
+        
 
     @staticmethod
     def pika_host(node):
@@ -131,8 +133,11 @@ class SimulatorFullView(AbstractWorld):
         connection.close()
 
     def send_hello(self):
-        for n in self._world_map.nodes:
-            self.send_message(n, HELLO_MSG)
+        if (self.current_status ) : 
+            self.id = random.sample(range(10), 1)
+            self.current_round = 0 
+            for n in self._world_map.nodes:
+                self.send_message(n, [self.current_round, self.id])
 
     @property
     def neighbors(self) -> list:
@@ -160,10 +165,25 @@ class SimulatorFullView(AbstractWorld):
 
 class SimulatorOnlyNeighbors(SimulatorFullView):
     name = 'simulator-only-neighbours'
-
+    network_number_of_nodes = number_of_nodes(nx.read_gml(args.network_gml))
+    log(f'number of nodes {network_number_of_nodes}')
+    current_status = False 
+    current_id = -1  
+    current_parent = -1 
+    current_round = -1
+    sub_tree_length = 0 
     def send_hello(self):
-        for n in self.neighbors:
-            self.send_message(n, HELLO_MSG)
+        if (random.random()> 0.2) : 
+            #  each node is active with probability 0.8 
+            self.current_status = True 
+        log(f'current status is {self.current_status}')
+        if (self.current_status ) : 
+            self.current_id = random.sample(range(self.network_number_of_nodes), 1)
+            self.current_round = 0 
+            self.current_parent = self.current_node
+            for n in self.neighbors:
+                self.send_message(n, [self.current_round, self.current_id, 0])
+                log(f'sent message {[self.current_round, self.current_id, 0]} to {n}')
 
     def send_message(self, to, msg):
         if to not in self.neighbors and to != self.current_node:

@@ -1,0 +1,36 @@
+[info] number of nodes 9
+[info] Hello from node4
+[info] I'm connected to nodes ['1', '4']
+[info] I have edges [('4', '1'), ('4', '4')]
+[info] current status is True
+[info] send message to 1: [0, [2], 0]
+[info] sent message [0, [2], 0] to 1
+[info] send message to 4: [0, [2], 0]
+[info] sent message [0, [2], 0] to 4
+[info] message is [0, [2], 0]
+[info] this node's round : 0, id : 2, parent :4, status :True
+[info] the received message is, round 0, id : 2, sub_tree: 0, from 1
+[info] received message from ['1']
+[info] neighbors ['1']
+[info] returned from all of the neighbors 
+[info] send message to 1: [1, [2], 0]
+[info] message is [0, 7, 0]
+[info] this node's round : 1, id : 2, parent :4, status :True
+[info] the received message is, round 0, id : 7, sub_tree: 0, from 1
+[info] message is [0, [2], 0]
+[info] this node's round : 1, id : 2, parent :4, status :True
+[info] the received message is, round 0, id : 2, sub_tree: 0, from 4
+[info] message is [1, 4, 0]
+[info] this node's round : 1, id : 2, parent :4, status :True
+[info] the received message is, round 1, id : 4, sub_tree: 0, from 1
+[info] changed wave to 4
+[info] send message to 4: [1, 4, 0]
+[info] message is [1, 4, 0]
+[info] this node's round : 1, id : 4, parent :1, status :False
+[info] the received message is, round 1, id : 4, sub_tree: 0, from 4
+[info] received message from ['4']
+[info] neighbors ['4']
+[info] returned from all of the neighbors 
+[info] send message to 1: [1, 4, 0]
+[info] send message to 1: exit
+[info] send message to 4: exit
