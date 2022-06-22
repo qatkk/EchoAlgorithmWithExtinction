@@ -13,7 +13,7 @@ At each round a node receiving message acts as below:
 
 ### Code 
 This algorithm is implemented with the help of runner code provided with the project description.The runner code runs multiple nodes with the help of python multi-thread processing. Nodes are connected to each other with weighted edges which may or may not have packet loss or delay.
-Each node is implemented by node.py, and runs until end of the algorithm. Nodes communicate with the help of *rabbitmq* \cite{rabbitMQ} library in python. 
+Each node is implemented by node.py, and runs until end of the algorithm. Nodes communicate with the help of *rabbitmq*[1] library in python. 
 On every received message, perocess\hyph{msg} function is called to handle the message according to the algorithm. 
 Initially each node's id, round, parent, status, sub-tree length are set to {-1, 0, -1, False, 0}. Initial set-up is done at *initiate* function. 
 
@@ -80,7 +80,29 @@ If the current node is still active, it acts according to the length of it's sub
                 world.send_message(world.current_parent, [world.current_round, world.current_id, world.sub_tree_length])
  
  ## Performance Analysis of the Algorithm
- In this section we have generated random graphs using *networkx* library with different topologies to analyze the performance of the algorithm on each of them. As referred to in \cite{Fokkink} message complexity of this algorithm is $\BigOSI[\big]{E}$. Since each message in a round is sent twice in each edge and we have finite number of rounds. Here we will test this claim with the results we got from the implementation. 
+ In this section we have generated random graphs using *networkx* library with different topologies to analyze the performance of the algorithm on each of them. As referred to in [2] message complexity of this algorithm is $O(E)}$. Since each message in a round is sent twice in each edge and we have finite number of rounds. Here we will test this claim with the results we got from the implementation. 
  ### Output on Rings
  
- Each ring with \(N\) nodes has \(N\) edges. With the help of networkx generator function, several rings with different number of nodes was generated. The number of messages communicated in each graph, was plotted in figure\ref{fig:plotOfRings} as a function of the edges of the graph.
+ Each ring with \(N\) nodes has \(N\) edges. With the help of networkx generator function, several rings with different number of nodes was generated. The number of messages communicated in each graph, was plotted in figure below as a function of the edges of the graph.
+ 
+ <img width="517" alt="image" src="https://user-images.githubusercontent.com/43328710/175049188-5bb9e4b8-f98b-4f41-ae4f-637bfc4c81fc.png">
+
+### Output on Random Trees 
+
+Each tree with \(N\) nodes has \(N-1\) edges. Here several random trees were generated and testes, the result can be seen from figure\ref{fig:plotOfRandomTrees} as plotted. The x axis is the number of the edges of the tree and y axis shows the number of messages communicates until deciding the leader. 
+
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/43328710/175049818-7d0e015d-47fe-4e60-a9e2-74832e377971.png">
+
+
+### Output on Complete Graphs
+A complete graph of \(N\) nodes has \(\frac{N \times (N-1)} {2} \) edges total. Figure below shows the number of messages as the number of edges on the graph increases.
+
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/43328710/175049883-c9f51065-f872-49d9-903f-cb2c973362b4.png">
+
+## References
+<a id="1">[1]</a> 
+https://www.rabbitmq.com/
+
+<a id="2">[2]</a> 
+W. Fokkink,
+Distributed algorithms: an intuitive approach. 2018.
