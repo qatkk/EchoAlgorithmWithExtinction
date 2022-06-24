@@ -80,7 +80,7 @@ If the current node is still active, it acts according to the length of it's sub
                 world.send_message(world.current_parent, [world.current_round, world.current_id, world.sub_tree_length])
  
  ## Performance Analysis of the Algorithm
- In this section we have generated random graphs using *networkx* library with different topologies to analyze the performance of the algorithm on each of them. As referred to in [2] message complexity of this algorithm is $O(E)}$. Since each message in a round is sent twice in each edge and we have finite number of rounds. Here we will test this claim with the results we got from the implementation. 
+ In this section we have generated random graphs using *networkx* library with different topologies to analyze the performance of the algorithm on each of them. As referred to in [2] message complexity of this algorithm is $O(E)$. Since each message in a round is sent twice in each edge and we have finite number of rounds. Here we will test this claim with the results we got from the implementation. 
  ### Output on Rings
  
  Each ring with \(N\) nodes has \(N\) edges. With the help of networkx generator function, several rings with different number of nodes was generated. The number of messages communicated in each graph, was plotted in figure below as a function of the edges of the graph.
